@@ -1,109 +1,49 @@
-// Fruits data
-const products = [
-    {
-        id: 1,
-        name: "Apple",
-        price: 2.99,
-        image: "images/apple.jpg"
-    },
-    {
-        id: 2,
-        name: "Dragon Fruit",
-        price: 8.99,
-        image: "images/dragonfruit.jpg"
-    },
-    {
-        id: 3,
-        name: "Grapes",
-        price: 5.99,
-        image: "images/grapes.jpg"
-    },
-    {
-        id: 4,
-        name: "Melon",
-        price: 6.99,
-        image: "images/melon.jpg"
-    },
-    {
-        id: 5,
-        name: "Orange",
-        price: 4.99,
-        image: "images/orange.jpg"
-    },
-    {
-        id: 6,
-        name: "Pear",
-        price: 4.99,
-        image: "images/pear.jpg"
-    }
-];
-
-function displayProducts() {
-    const productGrid = document.querySelector('.product-grid');
-    if (!productGrid) return;
-    
-    productGrid.innerHTML = '';
-    
-    products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        
-        productCard.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <div class="product-info">
-                <h3 class="product-title">${product.name}</h3>
-                <p class="product-price">$${product.price}</p>
-                <button class="cta-button" onclick="showProductDetail(${product.id})">VIEW DETAILS</button>
-            </div>
-        `;
-        
-        productGrid.appendChild(productCard);
-    });
-}
-
-function showProductDetail(productId) {
-    window.location.href = `product-details.html?id=${productId}&type=fruit`;
-}
-
-// Add search functionality
-function setupSearch() {
+document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
-    const productsContainer = document.querySelector('.product-grid');
-    if (!searchInput || !productsContainer) return;
-
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const productCards = document.querySelectorAll('.product-card');
-        let hasResults = false;
-        
-        productCards.forEach(card => {
-            const title = card.querySelector('.product-title').textContent.toLowerCase();
-            if (title.includes(searchTerm)) {
-                card.style.display = 'block';
-                hasResults = true;
-            } else {
-                card.style.display = 'none';
-            }
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            const productCards = document.querySelectorAll('.product-card');
+            let hasResults = false;
+            
+            productCards.forEach(card => {
+                const titleElement = card.querySelector('h3');
+                if (titleElement) {
+                    const title = titleElement.textContent.toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                        hasResults = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+            
+            // Show/hide no results message
+            const noResults = document.getElementById('no-results') || createNoResultsMessage();
+            noResults.style.display = hasResults ? 'none' : 'block';
         });
-
-        // Remove existing message if it exists
-        const existingMessage = document.querySelector('.no-results-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-
-        // Show message if no results and search term isn't empty
-        if (!hasResults && searchTerm !== '') {
-            const message = document.createElement('div');
-            message.className = 'no-results-message';
-            message.textContent = 'No items found. Please try another search.';
-            productsContainer.appendChild(message);
-        }
-    });
-}
-
-// Initialize display when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    displayProducts();
-    setupSearch();
+    }
 });
+
+function createNoResultsMessage() {
+    const noResults = document.createElement('div');
+    noResults.id = 'no-results';
+    noResults.style.textAlign = 'center';
+    noResults.style.padding = '20px';
+    noResults.style.color = '#1e3d59';
+    noResults.style.fontSize = '1.4rem';
+    noResults.style.width = '100%';
+    noResults.style.background = 'rgba(255, 255, 255, 0.9)';
+    noResults.style.borderRadius = '8px';
+    noResults.style.margin = '20px auto';
+    noResults.style.maxWidth = '400px';
+    noResults.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    noResults.textContent = 'No products found. Please try another search.';
+    
+    const productGrid = document.querySelector('.product-grid');
+    productGrid.parentNode.insertBefore(noResults, productGrid.nextSibling);
+    
+    return noResults;
+}

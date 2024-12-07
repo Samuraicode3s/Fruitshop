@@ -203,6 +203,10 @@ nav {
 }
 
 .product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     background: var(--card-bg);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
@@ -350,13 +354,13 @@ footer {
 
 #search-input {
     width: 100%;
-    padding: 15px 25px;
+    max-width: 600px;
+    padding: 12px 20px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 25px;
     border: none;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #search-input:focus {
