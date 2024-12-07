@@ -5,9 +5,56 @@
     box-sizing: border-box;
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: var(--primary-dark);
+    color: var(--text-light);
+}
+
+.container, 
+.main-content, 
+.product-section {
+    background: #222831;  /* Ensure all containers match */
+}
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #2C3E50;  /* Dark blue-gray */
+    position: relative;
+}
+
+/* Optional: Add a very subtle pattern */
+body {
+    background-color: #FAF3E0;
+    background-image: 
+        linear-gradient(rgba(255,255,255,.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.2) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* Or even simpler, just a clean gradient */
+body {
+    background: linear-gradient(to bottom, #FAF3E0, #F5EBD8);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(250, 243, 224, 0.97),
+        rgba(250, 243, 224, 0.93)
+    );
+    z-index: -1;
 }
 
 /* Header styles */
@@ -73,117 +120,129 @@ nav {
 
 /* Hero section */
 .hero {
-    height: 50vh;
-    margin-top: 0;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: linear-gradient(135deg, 
+        var(--primary-dark),
+        #2a5478
+    );
+    padding: 3rem 0;
     text-align: center;
     color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 50%);
+    opacity: 0.7;
 }
 
 .hero-content {
     max-width: 800px;
-    padding: 2rem;
+    margin: 0 auto;
+    padding-top: 20px;
 }
 
-.hero-content h1 {
+.hero h1 {
     font-size: 3.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+.hero p {
+    font-size: 1.8rem;
     opacity: 0.9;
 }
 
 .cta-button {
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    background-color: #ff4444;
-    color: white;
+    background: var(--secondary-color);
+    color: var(--text-dark);
     border: none;
+    padding: 12px 25px;
     border-radius: 25px;
     cursor: pointer;
-    margin-top: 1.5rem;
+    font-weight: 500;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
-    text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(92, 64, 51, 0.2);
 }
 
 .cta-button:hover {
-    background-color: #ff2222;
+    background: var(--accent-color);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+    box-shadow: 0 6px 15px rgba(92, 64, 51, 0.4);
 }
 
 /* Products section */
 .products {
-    padding: 0 5% 4rem;
+    padding: 20px 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .products h2 {
     text-align: center;
-    margin: 2rem 0 3rem;
     font-size: 2.5rem;
-    color: #333;
+    margin-bottom: 30px;
+    color: var(--primary-color);
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem 2rem;
-    padding: 1rem 0;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+    gap: 30px;
     justify-content: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .product-card {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 10px;
+    background: var(--card-bg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    padding-bottom: 1rem;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .product-image {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    display: block;
+    transition: all 0.3s ease;
 }
 
 .product-info {
-    padding: 1.5rem 1.5rem 1rem;
+    padding: 20px;
 }
 
 .product-title {
-    font-size: 1.1rem;
-    margin-bottom: 0.8rem;
-    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
 }
 
 .product-price {
-    color: #ff4444;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 1.2rem;
+    color: black;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin: 8px 0;
+}
+
+/* Optional: make prices bolder */
+.product-price {
+    font-weight: 600;        /* Slightly bolder */
 }
 
 /* Footer styles */
@@ -247,44 +306,67 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 1001;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-content {
     background: white;
-    margin: 15% auto;
     padding: 20px;
     width: 90%;
-    max-width: 600px;
+    max-width: 500px;
     border-radius: 10px;
     position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .close {
     position: absolute;
-    right: 20px;
+    right: 15px;
     top: 10px;
-    font-size: 28px;
+    font-size: 24px;
     cursor: pointer;
+    color: #666;
+    z-index: 1;
 }
 
+.close:hover {
+    color: #ff4444;
+}
+
+/* Search container */
 .search-container {
-    padding: 2rem 0;
-    margin: 1rem auto 3rem;
-    max-width: 600px;
-    text-align: center;
+    position: relative;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 0 20px;
+    z-index: 90;
+    background: transparent;
 }
 
-.search-container input {
+#search-input {
     width: 100%;
-    max-width: 400px;
-    padding: 0.8rem 1.2rem;
-    margin: 0 auto;
-    display: block;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    font-size: 1rem;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+#search-input::placeholder {
+    color: #999;
 }
 
 /* Responsive design */
@@ -322,33 +404,463 @@ footer {
 }
 
 /* Navigation Styles */
-.main-nav {
+.nav-container {
     position: fixed;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 20px;
+    z-index: 1000;
+}
+
+.main-nav {
+    display: flex;
+    gap: 15px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 30px;
+}
+
+.main-nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 8px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.main-nav a.active {
+    background: var(--accent-orange);
+}
+
+/* Adjust hero section to account for fixed nav */
+.hero {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+/* Filter Styles */
+.filters {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filters ul {
+    list-style: none;
+    padding: 0;
+}
+
+.filters li {
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.filters select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Newsletter Styles */
+.newsletter {
+    background: #f8f8f8;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.newsletter form {
+    max-width: 500px;
+    margin: 20px auto;
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-detail {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-detail img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.detail-info {
+    flex: 1;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.quantity-controls button {
+    padding: 5px 15px;
+    border: none;
+    background: #ff4444;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.description {
+    margin: 15px 0;
+    color: #666;
+}
+
+/* Add responsive design */
+@media (min-width: 768px) {
+    .product-detail {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .product-detail img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.main-nav {
     background: white;
     padding: 10px 20px;
     border-radius: 25px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-    display: flex;
-    gap: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.nav-link {
-    color: #333;
+.cart-icon {
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    padding: 8px;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.main-nav a {
+    color: white;
     text-decoration: none;
-    padding: 5px 15px;
-    border-radius: 20px;
+    padding: 8px 25px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.main-nav a:hover {
+    opacity: 1;
+}
+
+.main-nav a.active {
+    background: var(--accent-orange);
+    opacity: 1;
+    box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+}
+
+.hero {
+    background: #34568B;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+/* Option 1: Deep Purple & Coral */
+:root {
+    --primary-color: #5C4033;     /* Rich Brown */
+    --secondary-color: #D4A373;   /* Warm Sand */
+    --gradient-start: #3E2723;    /* Deep Brown */
+    --gradient-end: #795548;      /* Soft Brown */
+    --accent-color: #E6B17E;      /* Warm Peach */
+    --text-light: #FEFAE0;        /* Cream White */
+    --text-dark: #2C1810;         /* Dark Brown */
+    --background-light: #FAF3E0;  /* Light Beige */
+}
+
+/* Option 2: Forest Green & Gold */
+:root {
+    --primary-color: #2D5A27;
+    --secondary-color: #FFB347;
+    --gradient-start: #1E4121;
+    --gradient-end: #3C7A34;
+    --text-light: #ffffff;
+    --text-dark: #2C1810;
+}
+
+/* Option 3: Ocean Blue & Coral (Current Selection) */
+:root {
+    --primary-color: #1B4965;
+    --secondary-color: #FF6B6B;
+    --gradient-start: #153E5A;
+    --gradient-end: #216C91;
+    --text-light: #ffffff;
+    --text-dark: #2C1810;
+}
+
+/* Apply the colors */
+.hero {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: var(--text-light);
+}
+
+.main-nav a.active {
+    background: var(--secondary-color);
+    color: var(--text-light);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.main-nav a:not(.active):hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--primary-color);
+}
+
+.product-price {
+    color: var(--secondary-color);
+}
+
+.cta-button {
+    background: var(--secondary-color);
+    color: var(--text-light);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.cta-button:hover {
+    background: var(--secondary-color);
+    filter: brightness(110%);
+}
+
+.product-title {
+    color: var(--text-dark);
+}
+
+.products h2 {
+    color: var(--primary-color);
+}
+
+#search-input {
+    color: var(--text-dark);
+}
+
+#search-input::placeholder {
+    color: rgba(0,0,0,0.4);
+}
+
+.product-card {
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.product-card:hover {
+    border-color: var(--secondary-color);
+}
+
+/* Ensure single search result centers */
+@media (min-width: 768px) {
+    .product-grid:has(.product-card:only-child) {
+        justify-items: center;
+    }
+    
+    .product-card:only-child {
+        grid-column: 1 / -1;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+.main-nav a:not(.active) {
+    color: black !important;
+    background: white;
+    opacity: 1;
+}
+
+.main-nav a:not(.active):hover {
+    opacity: 1;
+}
+
+.no-results-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    color: #666;
+    grid-column: 1 / -1;
+    margin: 20px auto;
+}
+
+/* Update heading color for better contrast */
+.featured-title {
+    color: #ffffff;
+}
+
+h1, h2, h3, p {
+    color: #ffffff;
+}
+
+/* Base theme colors */
+:root {
+    --primary-dark: #1e3d59;      /* Rich navy blue */
+    --primary-light: #f5f0e1;     /* Warm off-white */
+    --text-primary: rgba(255, 255, 255, 0.95);   /* Slightly softened white */
+    --text-secondary: rgba(255, 255, 255, 0.85); /* Softer white */
+    --text-muted: rgba(255, 255, 255, 0.75);     /* Even softer white */
+    --card-bg: #ffffff;
+    --accent: #3498db;            /* Bright blue accent */
+}
+
+/* Text styles - more refined */
+.section-title {
+    color: var(--text-primary);
+    font-size: 3.2rem;           /* Slightly smaller */
+    font-weight: 500;            /* Lighter weight */
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.3px;       /* Reduced spacing */
+}
+
+.section-subtitle {
+    color: var(--text-muted);    /* More subtle */
+    font-size: 1.6rem;           /* Smaller */
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    letter-spacing: 0.2px;
+}
+
+.featured-title {
+    color: var(--text-secondary);
+    font-size: 2rem;             /* Smaller */
+    text-align: center;
+    margin: 2rem 0;
+    font-weight: 400;            /* Lighter */
+    letter-spacing: 0.2px;
+}
+
+/* Product cards */
+.product-title {
+    color: var(--primary-dark);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 12px 0 8px;
+}
+
+.product-price {
+    color: var(--accent);
+    font-weight: 500;            /* Lighter */
+    font-size: 1.1rem;
+}
+
+/* Navigation */
+.main-nav a {
+    color: var(--text-muted);
+    font-weight: 400;
     transition: all 0.3s ease;
 }
 
-.nav-link.active {
-    background: #ff4444;
-    color: white;
+.main-nav a.active {
+    background: var(--accent);
+    color: var(--text-primary);
+    font-weight: 500;
 }
 
-.nav-link:hover:not(.active) {
-    background: #f0f0f0;
+/* Search placeholder */
+#search-input::placeholder {
+    color: rgba(0, 0, 0, 0.4);   /* Lighter placeholder */
+}
+
+/* Product card image container */
+.product-card {
+    /* ... existing styles ... */
+    overflow: hidden;  /* Ensure images don't spill out */
+}
+
+/* Product images */
+.product-card img {
+    width: 100%;
+    height: 200px;          /* Fixed height */
+    object-fit: cover;      /* Cover the space without stretching */
+    object-position: center; /* Center the image */
+    border-radius: 8px;     /* Rounded corners */
+    margin-bottom: 15px;
+}
+
+/* Optional: Add a subtle transition for hover effect */
+.product-card img {
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.price {
+    color: black;
+}
+
+[class*="price"] {
+    color: black;
 }

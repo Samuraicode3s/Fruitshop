@@ -3,64 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ronin's Shop</title>
+    <title>Ronin's Shop - Fruits</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Remove the duplicate header and keep only the cart icon -->
-    <div class="cart-icon">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count">0</span>
-    </div>
-
-    <!-- Add Navigation -->
-    <nav class="main-nav">
-        <a href="index.html" class="nav-link active">Fruits</a>
-        <a href="vegetables.html" class="nav-link">Vegetables</a>
-    </nav>
-
-    <!-- Hero Section -->
     <section class="hero">
+        <div class="nav-container">
+            <nav class="main-nav">
+                <a href="index.html" class="active">Fruits</a>
+                <a href="vegetables.html">Vegetables</a>
+            </nav>
+        </div>
+
         <div class="hero-content">
-            <h1>Ronin's Shop</h1>
-            <p>Ronin's items</p>
-            <button class="cta-button">SHOP NOW</button>
+            <h1 class="section-title">Ronin's Shop</h1>
+            <p class="section-subtitle">Fresh Fruits</p>
         </div>
     </section>
 
-    <!-- Search Section -->
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search fruits...">
     </div>
 
-    <!-- Products Section -->
-    <section class="products" id="products">
-        <h2>Featured Products</h2>
+    <section class="products">
+        <h2 class="featured-title">Featured Fruits</h2>
         <div class="product-grid"></div>
     </section>
 
-    <!-- Cart Modal -->
-    <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Shopping Cart</h2>
-            <div id="cart-items"></div>
-            <div class="cart-total">
-                <h3>Total: $<span id="cart-total">0</span></h3>
-            </div>
-        </div>
-    </div>
-
-    <!-- Product Detail Modal -->
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="product-detail"></div>
-        </div>
-    </div>
-
-    <!-- Make sure script is at the bottom of body -->
     <script src="script.js"></script>
 </body>
 </html>

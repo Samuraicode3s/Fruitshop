@@ -38,7 +38,6 @@ const products = [
     }
 ];
 
-// Add display functionality
 function displayProducts() {
     const productGrid = document.querySelector('.product-grid');
     if (!productGrid) return;
@@ -54,7 +53,7 @@ function displayProducts() {
             <div class="product-info">
                 <h3 class="product-title">${product.name}</h3>
                 <p class="product-price">$${product.price}</p>
-                <button class="cta-button" onclick="showProductDetail(${product.id})">Add to Cart</button>
+                <button class="cta-button" onclick="showProductDetail(${product.id})">VIEW DETAILS</button>
             </div>
         `;
         
@@ -62,22 +61,44 @@ function displayProducts() {
     });
 }
 
-// Initialize display when page loads
+function showProductDetail(productId) {
+    window.location.href = `product-details.html?id=${productId}&type=vegetable`;
+}
+
+// Add this function to close the modal
+function closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+        modal.style.display = 'none';
+        // Remove the modal from DOM completely
+        modal.remove();
+    }
+}
+
+// Add event listeners when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     displayProducts();
     
-    // Add search functionality
-    const searchInput = document.querySelector('#search-input');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.trim();
-            if (searchTerm === '') {
-                displayProducts();
-            } else {
-                searchProducts(searchTerm);
+    // Add click event to close button
+    const closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeModal);
+    }
+    
+    // Add click event to modal background
+    const modal = document.querySelector('.modal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
             }
         });
     }
 });
 
-// Rest of your cart and search functionality...
+// Add keyboard event to close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
