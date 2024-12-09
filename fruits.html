@@ -1,47 +1,37 @@
-<div class="product-grid">
-    <!-- First Row -->
-    <div class="product-card">
-        <img src="images/apple.jpg" alt="Apple">
-        <h3>Apple</h3>
-        <div class="price">$2.99</div>
-        <button class="view-details">VIEW DETAILS</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronin's Shop - Fruits</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <section class="hero">
+        <div class="nav-container">
+            <nav class="main-nav">
+                <a href="index.html" class="active">Fruits</a>
+                <a href="vegetables.html">Vegetables</a>
+            </nav>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="section-title">Ronin's Shop</h1>
+            <h2 class="section-subtitle">Fresh Fruits</h2>
+        </div>
+    </section>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search fruits...">
     </div>
 
-    <div class="product-card">
-        <img src="images/dragon-fruit.jpg" alt="Dragon Fruit">
-        <h3>Dragon Fruit</h3>
-        <div class="price">$8.99</div>
-        <button class="view-details">VIEW DETAILS</button>
-    </div>
+    <section class="products">
+        <h2 class="featured-title">Featured Fruits</h2>
+        <div class="product-grid"></div>
+    </section>
 
-    <div class="product-card">
-        <img src="images/grapes.jpg" alt="Grapes">
-        <h3>Grapes</h3>
-        <div class="price">$5.99</div>
-        <button class="view-details">VIEW DETAILS</button>
-    </div>
-
-    <!-- Second Row -->
-    <div class="product-card">
-        <img src="images/orange.jpg" alt="Orange">
-        <h3>Orange</h3>
-        <div class="price">$3.99</div>
-        <button class="view-details">VIEW DETAILS</button>
-    </div>
-
-    <div class="product-card">
-        <img src="images/melon.jpg" alt="Melon">
-        <h3>Melon</h3>
-        <div class="price">$1.99</div>
-        <button class="view-details">VIEW DETAILS</button>
-    </div>
-
-    <div class="product-card">
-        <img src="images/pear.jpg" alt="Pear">
-        <h3>Pear</h3>
-        <div class="price">$2.49</div>
-        <button class="view-details">VIEW DETAILS</button>
-    </div>
-</div>
-
-<script src="fruits.js"></script> 
+    <script src="fruits.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
