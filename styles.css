@@ -198,15 +198,19 @@ nav {
     gap: 30px;
     padding: 20px;
 }
-
+/* Product Card (box around the product)*/
 .product-card {
     background: white;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    min-height: 400px;
+    width: 100%;
+    max-width: 450px;
 }
 
 /* Image Container */
