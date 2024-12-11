@@ -1,5 +1,5 @@
 // Vegetables data
-const products = [
+const vegetablesProducts = [
     {
         id: 1,
         name: "Broccoli",
@@ -44,7 +44,7 @@ function displayProducts() {
     
     productGrid.innerHTML = '';
     
-    products.forEach(product => {
+    vegetablesProducts.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
         
@@ -62,6 +62,7 @@ function displayProducts() {
 }
 
 function showProductDetail(productId) {
+    const product = vegetablesProducts.find(p => p.id === productId);
     window.location.href = `product-details.html?id=${productId}&type=vegetable`;
 }
 

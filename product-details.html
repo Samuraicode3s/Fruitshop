@@ -8,36 +8,71 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="cart-icon">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count">0</span>
-    </div>
+    <!-- Header Section -->
+    <header>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Fruits</a>
+            <a href="vegetables.html" class="nav-link">Vegetables</a>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
 
-    <nav class="main-nav">
-        <a href="index.html" class="nav-link">Fruits</a>
-        <a href="vegetables.html" class="nav-link">Vegetables</a>
-    </nav>
+    <!-- Main Content -->
+    <main class="product-details-page">
+        <!-- Back Button -->
+        <a href="javascript:history.back()" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
 
-    <div class="product-details-page">
         <div class="product-details-container">
-            <img id="product-image" src="" alt="">
+            <!-- Left Side - Image Section -->
+            <div class="product-image-section">
+                <img id="product-image" src="" alt="">
+            </div>
+
+            <!-- Right Side - Product Information -->
             <div class="product-info">
                 <h1 id="product-name"></h1>
                 <p class="price" id="product-price"></p>
-                <div class="quantity-controls">
-                    <button onclick="updateQuantity(-1)">-</button>
-                    <span id="quantity">1</span>
-                    <button onclick="updateQuantity(1)">+</button>
-                </div>
-                <button class="cta-button" onclick="addToCart()">ADD TO CART</button>
+                
+                <!-- Product Details -->
                 <div class="product-description">
                     <h2>Description</h2>
                     <p id="product-description"></p>
                 </div>
+
+                <!-- Nutrition Information -->
+                <div class="nutrition-info">
+                    <h2>Nutrition Facts</h2>
+                    <div id="nutrition-details"></div>
+                </div>
+
+                <!-- Purchase Section -->
+                <div class="purchase-section">
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(-1)">-</button>
+                        <span id="quantity">1</span>
+                        <button onclick="updateQuantity(1)">+</button>
+                    </div>
+                    <button class="cta-button" onclick="addToCart()">
+                        <i class="fas fa-cart-plus"></i> ADD TO CART
+                    </button>
+                </div>
+
+                <!-- Origin Information -->
+                <div class="origin-info">
+                    <h2>Origin</h2>
+                    <p id="product-origin"></p>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
+    <script src="fruits.js"></script>
+    <script src="vegetables.js"></script>
     <script src="product-details.js"></script>
 </body>
 </html> 

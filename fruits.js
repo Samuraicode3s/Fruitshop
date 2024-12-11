@@ -1,5 +1,5 @@
 // Fruits data
-const products = [
+const fruitsProducts = [
     {
         id: 1,
         name: "Apple",
@@ -44,7 +44,7 @@ function displayProducts() {
     
     productGrid.innerHTML = '';
     
-    products.forEach(product => {
+    fruitsProducts.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
         
@@ -64,6 +64,7 @@ function displayProducts() {
 }
 
 function showProductDetail(productId) {
+    const product = fruitsProducts.find(p => p.id === productId);
     window.location.href = `product-details.html?id=${productId}&type=fruit`;
 }
 
