@@ -54,7 +54,8 @@ function displayProducts() {
             </div>
             <div class="product-info">
                 <h3 class="product-title">${product.name}</h3>
-                <p class="product-price">$${product.price}</p>
+                <p class="product-price">$${product.price.toFixed(2)}</p>
+                <button class="cta-button" onclick="addToCartWithFeedback(${JSON.stringify(product).replace(/"/g, '&quot;')})">Add to Cart</button>
                 <button class="cta-button" onclick="showProductDetail(${product.id})">VIEW DETAILS</button>
             </div>
         `;
@@ -72,3 +73,30 @@ function showProductDetail(productId) {
 document.addEventListener('DOMContentLoaded', () => {
     displayProducts();
 }); 
+
+async function addToCartWithFeedback(product) {
+    try {
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = 'Adding...';
+        button.disabled = true;
+        
+        await cart.addToCart(product);
+        
+        button.textContent = '✓ Added!';
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+        }, 2000);
+    } catch (error) {
+        console.error('Failed to add to cart:', error);
+        const button = event.target;
+        button.textContent = 'Failed to add';
+        button.style.backgroundColor = '#ff4444';
+        setTimeout(() => {
+            button.textContent = 'Add to Cart';
+            button.style.backgroundColor = '';
+            button.disabled = false;
+        }, 2000);
+    }
+}

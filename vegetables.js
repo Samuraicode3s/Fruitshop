@@ -4,37 +4,37 @@ const vegetablesProducts = [
         id: 1,
         name: "Broccoli",
         price: 3.99,
-        image: "images/broccoli.jpg"
+        image: "Images/Broccoli.jpg"
     },
     {
         id: 2,
         name: "Cucumber",
         price: 2.49,
-        image: "images/cucumber.jpg"
+        image: "Images/Cucumber.jpg"
     },
     {
         id: 3,
         name: "Radish",
         price: 1.99,
-        image: "images/radish.jpg"
+        image: "Images/Radish.jpg"
     },
     {
         id: 4,
         name: "Red Pepper",
         price: 3.49,
-        image: "images/redpepper.jpg"
+        image: "Images/RedPepper.jpg"
     },
     {
         id: 5,
         name: "Tomato",
         price: 1.99,
-        image: "images/tomato.jpg"
+        image: "Images/Tomato.jpg"
     },
     {
         id: 6,
         name: "Onion",
         price: 1.49,
-        image: "images/onion.jpg"
+        image: "Images/Onion.jpg"
     }
 ];
 
